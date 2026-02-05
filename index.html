@@ -14,6 +14,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
     }
 
     .card {
@@ -23,7 +24,6 @@
       padding: 25px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      text-align: center;
     }
 
     h1 {
@@ -33,18 +33,7 @@
 
     p {
       font-size: 16px;
-      margin-bottom: 15px;
-    }
-
-    h2 {
-      font-size: 18px;
       margin-bottom: 20px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 15px;
     }
 
     button {
@@ -53,63 +42,80 @@
       border: none;
       border-radius: 12px;
       cursor: pointer;
-      width: 120px;
-    }
-
-    #yes {
       background-color: #ff4d6d;
       color: white;
+      width: 100%;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      width: 45%;
     }
 
     #no {
       background-color: #e0e0e0;
       color: #333;
-      transition: transform 0.3s;
-    }
-
-    .music {
-      margin-bottom: 15px;
     }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <h1>Marangely 💕</h1>
 
-    <p>No sé cómo explicarlo,<br>
-    pero contigo todo se siente diferente 🥹</p>
+    <!-- PASO 1 -->
+    <div id="step1">
+      <h1>Marangely 💕</h1>
+      <p>
+        No sé cuándo pasó,<br>
+        pero en poco tiempo te volviste alguien muy importante para mí 🥹
+      </p>
+      <button onclick="goStep2()">Continuar 💖</button>
+    </div>
 
-    <!-- Música -->
-    <div class="music">
+    <!-- PASO 2 -->
+    <div id="step2" class="hidden">
       <p><strong>Dale play 🎵</strong></p>
-      <iframe 
-        style="border-radius:12px" 
-        src="https://open.spotify.com/embed/track/0hKRSZhUGEhKU6aNSPBACZ?utm_source=generator" 
-        width="100%" 
-        height="80" 
-        frameBorder="0" 
+      <iframe
+        style="border-radius:12px"
+        src="https://open.spotify.com/embed/search/Sure%20Thing%20Miguel"
+        width="100%"
+        height="80"
+        frameBorder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
       </iframe>
+      <button style="margin-top:15px" onclick="goStep3()">Seguir 💕</button>
     </div>
 
-    <h2>¿Te gustaría ser mi novia? 💖</h2>
-
-    <div class="buttons">
-      <button id="yes" onclick="accept()">Sí 💘</button>
-      <button id="no" onclick="decline()">No 😅</button>
+    <!-- PASO 3 -->
+    <div id="step3" class="hidden">
+      <h2>¿Te gustaría ser mi novia? 💖</h2>
+      <div class="buttons">
+        <button onclick="accept()">Sí 💘</button>
+        <button id="no" onclick="decline()">No 😅</button>
+      </div>
     </div>
+
   </div>
 
   <script>
-    let moved = false;
+    function goStep2() {
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    }
 
-    document.getElementById("no").addEventListener("touchstart", () => {
-      if (!moved) {
-        document.getElementById("no").style.transform = "translateY(15px)";
-        moved = true;
-      }
-    });
+    function goStep3() {
+      document.getElementById("step2").classList.add("hidden");
+      document.getElementById("step3").classList.remove("hidden");
+    }
 
     function accept() {
       document.body.innerHTML = `
@@ -128,14 +134,14 @@
           <h2>Gracias por decir que sí, Marangely</h2>
           <p>
             Prometo cuidarte,<br>
-            apoyarte y hacerte sonreír ✨
+            apoyarte y hacerte sonreír siempre ✨
           </p>
         </div>
       `;
     }
 
     function decline() {
-      alert("Está bien 🥺💗 gracias por ser honesta");
+      alert("Está bien 🥺 gracias por ser honesta");
     }
   </script>
 
