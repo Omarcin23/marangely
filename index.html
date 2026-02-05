@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Marangely 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      width: 90%;
+      max-width: 360px;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      width: 120px;
+    }
+
+    #yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #no {
+      background-color: #e0e0e0;
+      color: #333;
+      transition: transform 0.3s;
+    }
+
+    .music {
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Marangely 💕</h1>
+
+    <p>No sé cómo explicarlo,<br>
+    pero contigo todo se siente diferente 🥹</p>
+
+    <!-- Música -->
+    <div class="music">
+      <p><strong>Dale play 🎵</strong></p>
+      <iframe 
+        style="border-radius:12px" 
+        src="https://open.spotify.com/embed/track/0hKRSZhUGEhKU6aNSPBACZ?utm_source=generator" 
+        width="100%" 
+        height="80" 
+        frameBorder="0" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    </div>
+
+    <h2>¿Te gustaría ser mi novia? 💖</h2>
+
+    <div class="buttons">
+      <button id="yes" onclick="accept()">Sí 💘</button>
+      <button id="no" onclick="decline()">No 😅</button>
+    </div>
+  </div>
+
+  <script>
+    let moved = false;
+
+    document.getElementById("no").addEventListener("touchstart", () => {
+      if (!moved) {
+        document.getElementById("no").style.transform = "translateY(15px)";
+        moved = true;
+      }
+    });
+
+    function accept() {
+      document.body.innerHTML = `
+        <div style="
+          height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          flex-direction:column;
+          background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+          font-family: Arial;
+          text-align:center;
+          padding:20px;
+        ">
+          <h1>💖🥹</h1>
+          <h2>Gracias por decir que sí, Marangely</h2>
+          <p>
+            Prometo cuidarte,<br>
+            apoyarte y hacerte sonreír ✨
+          </p>
+        </div>
+      `;
+    }
+
+    function decline() {
+      alert("Está bien 🥺💗 gracias por ser honesta");
+    }
+  </script>
+
+</body>
+</html>
